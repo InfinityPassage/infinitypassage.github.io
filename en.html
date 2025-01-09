@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إInfinity Passage | Integrated Global Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0A2342;
+            --secondary-color: #2CA4D8;
+            --accent-color: #38B000;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+            line-height: 1.7;
+            color: #333;
+        }
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10,35,66,0.8), rgba(44,164,216,0.8)), 
+                        url('images/inpa.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 15px;
+        }
+        .navbar {
+            transition: all 0.3s ease;
+            background-color: transparent;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar.scrolled {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .service-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .service-card-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, var(--primary-color));
+            opacity: 0.8;
+        }
+        .service-card-content {
+            padding: 25px;
+        }
+        .btn-custom {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        .contact-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+        }
+        .features-section .card {
+            transition: all 0.3s ease;
+        }
+        .features-section .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* قسم الشركاء */
+        .partners-section {
+            background-color: #f4f6f9;
+            padding: 80px 0;
+        }
+        .partners-carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .partners-carousel img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            transition: all 0.5s ease;
+            filter: grayscale(100%) opacity(0.6);
+        }
+        .partners-carousel img:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%) opacity(1);
+        }
+        @keyframes float-partners {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .partners-carousel img {
+            animation: float-partners 3s ease-in-out infinite;
+        }
+		 /* أنماط إضافية للنوافذ المنبثقة */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .modal-body .list-group-item {
+            background-color: transparent;
+            border-color: rgba(0,0,0,0.1);
+            padding: 10px 15px;
+        }
+        .modal-body .list-group-item:before {
+            content: '✓';
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+		 .gallery-item {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+        transform: scale(1.05);
+    }
+    .gallery-overlay {
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+	 .insurance-section {
+        background-color: #f8f9fa;
+    }
+    .insurance-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .insurance-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    }
+    .insurance-card .card-header {
+        padding: 20px;
+    }
+    .insurance-card .price {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+    .insurance-card .price .h2 {
+        margin-left: 5px;
+    }
+    .insurance-card ul li {
+        display: flex;
+        align-items: center;
+    }
+    .insurance-card ul li i {
+        margin-left: 10px;
+    }
+	 .testimonials-section {
+        background-color: #f8f9fa;
+    }
+    .testimonial-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+    }
+    .testimonial-image img {
+        border: 4px solid var(--secondary-color);
+        object-fit: cover;
+    }
+    .testimonial-content {
+        position: relative;
+        z-index: 1;
+    }
+    .testimonial-content p {
+        font-style: italic;
+        color: #6c757d;
+    }
+    .testimonial-rating {
+        direction: ltr;
+    }
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: 20px;
+        font-size: 100px;
+        color: rgba(44,164,216,0.1);
+        z-index: 0;
+    }
+	  .testimonials-section {
+        background-color: #f8f9fa;
+    }
+    .testimonial-card {
+        transition: all 0.3s ease;
+        border-radius: 15px !important;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+    }
+    .testimonial-quote {
+        position: relative;
+        text-align: center;
+    }
+    .testimonial-quote i {
+        font-size: 3rem;
+        opacity: 0.2;
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .testimonial-quote p {
+        position: relative;
+        z-index: 1;
+        color: #6c757d;
+        font-style: italic;
+        line-height: 1.6;
+    }
+    .testimonial-author h5 {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    .testimonial-rating {
+        direction: ltr;
+    }
+    .testimonial-rating i {
+        transition: transform 0.3s ease;
+    }
+    .testimonial-rating i:hover {
+        transform: scale(1.2);
+    }
+	 .company-goals-section {
+        background-color: #f8f9fa;
+        padding: 4rem 0;
+    }
+    .goal-card {
+        position: relative;
+        transition: all 0.3s ease;
+        border-radius: 20px;
+        overflow: visible;
+    }
+    .goal-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.1) !important;
+    }
+    .goal-icon-container {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 10;
+    }
+    .goal-icon {
+        background-color: white;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .goal-icon i {
+        font-size: 3.5rem;
+    }
+    .goal-card .card-body {
+        padding-top: 70px;
+    }
+    .goal-card .card-title {
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .goal-card .card-text {
+        line-height: 1.8;
+        color: #6c757d;
+    }
+    @media (max-width: 768px) {
+        .goal-icon {
+            width: 80px;
+            height: 80px;
+        }
+        .goal-icon i {
+            font-size: 2.5rem;
+        }
+    	.language-switcher .btn {
+    display: flex;
+    align-items: center;
+}
+        .achievements-section {
+        backdrop-filter: blur(10px);
+        background-color: rgba(0,0,0,0.3);
+        border-radius: 15px;
+        padding: 20px;
+    }
+    .achievement-card {
+        transition: all 0.3s ease;
+    }
+    .achievement-card:hover {
+        transform: scale(1.05);
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+.gallery-grid {
+    transition: opacity 0.5s ease-in-out;
+}
+	    
+    </style>
+	</head>
+<body>
+  <!-- Top Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <div class="language-switcher ms-auto">
+            <button class="btn btn-outline-light" id="languageToggle">
+                <span class="language-ar">Arabic</span>
+                <span class="language-en d-none">Arabic</span>
+                <i class="fas fa-globe ms-2"></i>
+            </button>
+        </div>
+        <a class="navbar-brand" href="#">
+            <strong>Infinity Passage</strong>
+        </a>
+    </div>
+</nav>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const languageToggle = document.getElementById('languageToggle');
+    const languageAr = document.querySelector('.language-ar');
+    const languageEn = document.querySelector('.language-en');
+    
+    languageToggle.addEventListener('click', function() {
+        // التوجيه إلى الصفحة الإنجليزية
+        window.location.href = 'index.html';
+    });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const languageToggle = document.getElementById('languageToggle');
+    const languageAr = document.querySelector('.language-ar');
+    const languageEn = document.querySelector('.language-en');
+    
+    languageToggle.addEventListener('click', function() {
+        languageAr.classList.toggle('d-none');
+        languageEn.classList.toggle('d-none');
+        
+        // هنا يمكنك إضافة منطق تغيير اللغة
+        // مثل تحويل محتوى الصفحة أو تغيير اتجاه النص
+    });
+});
+</script>
+
+    <!-- Main Banner -->
+<section class="hero-section position-relative">
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" 
+         style="background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                url('images/inpa.jpg'); 
+                background-size: cover; 
+                background-position: center;">
+        
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6 text-white" data-aos="fade-left">
+                    <h1 class="display-4 mb-4 fw-bold">Infinity Passage</h1>
+                    <p class="lead mb-5">
+                        We open limitless horizons in the world of business and integrated services
+                    </p>
+                    <a href="#services" class="btn btn-custom btn-lg">Discover our services</a>
+                </div>
+                
+                <!-- قسم الإنجازات داخل الهيرو -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="achievements-section">
+                        <div class="row g-3">
+                            <div class="col-6 col-md-6 mb-3" data-aos="zoom-in">
+                                <div class="achievement-card bg-black bg-opacity-50 p-3 rounded-3 border border-secondary text-center">
+                                    <h3 class="display-6 text-warning mb-2" id="clientsCount" data-target="835">+0</h3>
+                                    <p class="small text-white-50">Happy client</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6 mb-3" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="achievement-card bg-black bg-opacity-50 p-3 rounded-3 border border-secondary text-center">
+                                    <h3 class="display-6 text-success mb-2" id="transactionsCount" data-target="1129">+0</h3>
+                                    <p class="small text-white-50">Successful transaction</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="achievement-card bg-black bg-opacity-50 p-3 rounded-3 border border-secondary text-center">
+                                    <h3 class="display-6 text-info mb-2" id="countriesCount" data-target="6">+0</h3>
+                                    <p class="small text-white-50">A country we operate in</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="achievement-card bg-black bg-opacity-50 p-3 rounded-3 border border-secondary text-center">
+                                    <h3 class="display-6 text-danger mb-2" id="satisfactionRate" data-target="98">%0</h3>
+                                    <p class="small text-white-50">Satisfaction rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function animateCounters() {
+        const counters = document.querySelectorAll('[id$="Count"], [id$="Rate"]');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'), 10);
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                
+                const currentValue = Math.floor(progress * target);
+                
+                counter.textContent = counter.id.includes('Rate') 
+                    ? `%${currentValue}` 
+                    : `+${currentValue}`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = counter.id.includes('Rate') 
+                        ? `%${target}` 
+                        : `+${target}`;
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(animateCounters, 500);
+    });
+</script>
+<!-- Company Goals Section -->
+<section class="company-goals-section py-5 bg-white">
+    <div class="container-fluid px-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Our Strategic Goals</h2>
+            <p class="lead text-muted">Our Vision and Aspirations at Infinity Passage</p>
+        </div>
+
+        <div class="row">
+            <!-- Goal 1 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-globe text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Global Expansion</h3>
+                        <p class="card-text text-muted">
+                            Striving to reach new global markets and expand our services to various regions around the world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal 2 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-lightbulb text-success"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Continuous Innovation</h3>
+                        <p class="card-text text-muted">
+                            Committed to innovation and developing integrated solutions that meet customers' needs with the highest standards of quality and efficiency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal 3 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-users text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Empowering Clients</h3>
+                        <p class="card-text text-muted">
+                            Supporting and empowering our clients to achieve their goals by offering specialized consultations and comprehensive solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal 4 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-chart-line text-info"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Sustainable Growth</h3>
+                        <p class="card-text text-muted">
+                            Achieving sustainable growth based on high quality, exceptional service, and added value for our clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal 5 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-handshake text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Strategic Partnerships</h3>
+                        <p class="card-text text-muted">
+                            Building strong strategic partnerships with leading organizations and companies to expand growth and development horizons.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal 6 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="goal-card card border-0 shadow-sm h-100 py-4">
+                    <div class="goal-icon-container">
+                        <div class="goal-icon">
+                            <i class="fas fa-shield-alt text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-5">
+                        <h3 class="card-title mb-3">Quality and Reliability</h3>
+                        <p class="card-text text-muted">
+                            Committed to the highest standards of quality and reliability in all our services while maintaining clients' trust.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const goalCards = document.querySelectorAll('.goal-card');
+        
+        goalCards.forEach(card => {
+            const icon = card.querySelector('.goal-icon i');
+            
+            card.addEventListener('mouseenter', function() {
+                icon.style.transform = 'rotate(360deg) scale(1.2)';
+                icon.style.transition = 'transform 0.5s ease';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                icon.style.transform = 'rotate(0deg) scale(1)';
+            });
+        });
+    });
+</script>
+<!-- Services -->
+<section id="services" class="service-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Our Specialized Services</h2>
+            <p class="lead text-muted">Comprehensive solutions for all your needs</p>
+        </div>
+
+        <div class="row">
+            <!-- Student Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Student.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Student Services</h3>
+                        <p>Comprehensive support for students at various educational stages</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#studentServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tourism Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Tourism.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Tourism and Trips</h3>
+                        <p>Unique and personalized tourism experiences for every client</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#tourismServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visa and Residency Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Visa.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Visa and Residency Services</h3>
+                        <p>Facilitating permits, visas, and residency procedures</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#visaServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cosmetic Medicine -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Beauty.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Comprehensive Cosmetic Medicine</h3>
+                        <p>Comprehensive solutions for cosmetic and therapeutic medicine</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#beautyServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real Estate Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Real.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Real Estate Services</h3>
+                        <p>Unique real estate exploration that inspires your personal aspirations</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#realServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Design.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Art & Design</h3>
+                        <p>Innovative designs that embody your vision</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#designServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial Brokerage -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Commercial.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Commercial Brokerage</h3>
+                        <p>Connecting businesses and facilitating global trade</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#commercialServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Services -->
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card">
+                    <div class="service-card-image" style="background-image: url('images/Shipping.jpg')">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3 class="mb-3">Shipping and Import</h3>
+                        <p>Comprehensive solutions for global supply chains</p>
+                        <a href="#" class="btn btn-sm btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#shippingServiceModal">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Popups -->
+<!-- Student Services Modal -->
+<div class="modal fade" id="studentServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Student Services</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Student.jpg" class="img-fluid rounded mb-3" alt="Student Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Our Comprehensive Student Services</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Specialized academic guidance consultations</li>
+                            <li class="list-group-item">Student admissions (Bachelor's, Master's, Ph.D.)</li>
+                            <li class="list-group-item">Graduate program support</li>
+                            <li class="list-group-item">International student exchange programs</li>
+                            <li class="list-group-item">Professional academic CV preparation</li>
+                            <li class="list-group-item">Scholarship and grant consultations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We provide comprehensive support for students at various educational levels, focusing on achieving their academic and career goals. Our team of specialized advisors accompanies you through every stage of your educational journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tourism Services Modal -->
+<div class="modal fade" id="tourismServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tourism Services</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Tourism.jpg" class="img-fluid rounded mb-3" alt="Tourism Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Comprehensive Tourism Packages</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Organizing individual and group tours</li>
+                            <li class="list-group-item">Hotel and restaurant reservations</li>
+                            <li class="list-group-item">Transportation and transfer services</li>
+                            <li class="list-group-item">Custom-tailored travel programs</li>
+                            <li class="list-group-item">Travel consultation and reception services</li>
+                            <li class="list-group-item">Comprehensive travel insurance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We provide unique and personalized travel experiences for every client, focusing on comfort and enjoyment with the highest standards of quality and service.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Visa and Residency Services Modal -->
+<div class="modal fade" id="visaServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Visa and Residency Services</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Visa.jpg" class="img-fluid rounded mb-3" alt="Visa and Residency Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Comprehensive Solutions for Visas, Residencies, and Permits</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Fast and accurate issuance of security clearances</li>
+                            <li class="list-group-item">Preparing visa files according to official requirements</li>
+                            <li class="list-group-item">Providing all types of residency services (tourism, work, etc.)</li>
+                            <li class="list-group-item">Preparing all necessary documents for government procedures</li>
+                            <li class="list-group-item">Professional consultations to facilitate obtaining necessary approvals</li>
+                            <li class="list-group-item">Comprehensive support for visas, residencies, and permits</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We ensure integrated services to complete your procedures easily and conveniently, focusing on quality and precision at every step.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Real Estate Services Modal -->
+<div class="modal fade" id="realServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Real Estate Services</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Real.jpg" class="img-fluid rounded mb-3" alt="Real Estate Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Comprehensive Real Estate Packages</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Buying and selling apartments in prime locations at competitive prices</li>
+                            <li class="list-group-item">Buying and selling luxury villas with elegant designs and various sizes</li>
+                            <li class="list-group-item">Buying and selling lands suitable for construction or investment</li>
+                            <li class="list-group-item">Real estate consultations and client assistance</li>
+                            <li class="list-group-item">Facilitating all sale and purchase procedures, including official documentation</li>
+                            <li class="list-group-item">Providing comprehensive insurance to protect your real estate investments</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We offer unique and tailored real estate experiences for every client, focusing on comfort and achieving the highest standards of quality and service in buying and selling apartments, villas, and lands.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Commercial Mediation Services Modal -->
+<div class="modal fade" id="commercialServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Commercial Mediation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Commercial.jpg" class="img-fluid rounded mb-3" alt="Commercial Mediation">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Global Commercial Mediation Services</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Connecting businesses and companies globally</li>
+                            <li class="list-group-item">Commercial expansion consultations</li>
+                            <li class="list-group-item">Feasibility studies</li>
+                            <li class="list-group-item">Negotiation and contracting services</li>
+                            <li class="list-group-item">Support for small and medium-sized enterprises</li>
+                            <li class="list-group-item">International marketing consultations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We facilitate global business communication and open new horizons for companies through integrated and smart mediation services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Shipping and Import Services Modal -->
+<div class="modal fade" id="shippingServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shipping and Import</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Shipping.jpg" class="img-fluid rounded mb-3" alt="Shipping and Import Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Comprehensive Shipping and Import Solutions</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Sea and air freight services</li>
+                            <li class="list-group-item">Fast customs clearance</li>
+                            <li class="list-group-item">Supply chain management</li>
+                            <li class="list-group-item">Real-time shipment tracking</li>
+                            <li class="list-group-item">Import and export consultations</li>
+                            <li class="list-group-item">Shipment insurance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We provide integrated global supply chain solutions, ensuring speed, security, and efficiency in shipping and import operations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Creative Design Services Modal -->
+<div class="modal fade" id="designServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Creative Design Services</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Design.jpg" class="img-fluid rounded mb-3" alt="Design Services">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Unique Design Innovations</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Website Design</li>
+                            <li class="list-group-item">Motion Advertisement Design</li>
+                            <li class="list-group-item">Logo and Visual Identity Design</li>
+                            <li class="list-group-item">Digital Content Design</li>
+                            <li class="list-group-item">UI/UX Design</li>
+                            <li class="list-group-item">Shipment Insurance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We provide comprehensive design solutions that align with the latest technical and creative trends, focusing on uniqueness and innovation in every project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cosmetic Medicine and Comprehensive Care Modal -->
+<div class="modal fade" id="beautyServiceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cosmetic Medicine and Comprehensive Care</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Beauty.jpg" class="img-fluid rounded mb-3" alt="Cosmetic Medicine and Comprehensive Care">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Comprehensive Cosmetic Medicine Services</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Specialized Cosmetic Medical Consultations</li>
+                            <li class="list-group-item">Non-Surgical Cosmetic Treatments</li>
+                            <li class="list-group-item">Advanced Surgical Cosmetic Procedures</li>
+                            <li class="list-group-item">Hair Transplantation and Density Restoration Services</li>
+                            <li class="list-group-item">Dental Aesthetics and Smile Correction</li>
+                            <li class="list-group-item">Comprehensive Medical Follow-Up Post-Treatment</li>
+                            <li class="list-group-item">Medical Insurance Covering Cosmetic Procedures</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>We provide integrated solutions for cosmetic and therapeutic medicine, ensuring the highest levels of precision, safety, and efficiency in medical services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Section -->
+<section class="gallery-section py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Photo Gallery</h2>
+            <p class="lead text-muted">A glimpse of our work and achievements</p>
+        </div>
+        
+        <!-- المجموعة الأولى -->
+        <div class="row gallery-grid" id="galleryFirstSet1" style="display: flex;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery1.png" class="img-fluid w-100" alt="صورة 1">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery1.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal1">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery2.png" class="img-fluid w-100" alt="صورة 2">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery2.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal2">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery3.png" class="img-fluid w-100" alt="صورة 3">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery3.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal3">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- المجموعة الثانية -->
+        <div class="row gallery-grid" id="galleryFirstSet2" style="display: none;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery4.png" class="img-fluid w-100" alt="صورة 4">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery4.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal4">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery5.png" class="img-fluid w-100" alt="صورة 5">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery5.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal5">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery6.png" class="img-fluid w-100" alt="صورة 6">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery6.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal6">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- المجموعة الثالثة -->
+        <div class="row gallery-grid" id="galleryFirstSet3" style="display: none;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery7.png" class="img-fluid w-100" alt="صورة 7">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery7.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal7">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery8.png" class="img-fluid w-100" alt="صورة 8">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery8.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal8">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery9.png" class="img-fluid w-100" alt="صورة 9">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery9.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal9">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- المجموعة الرابعة -->
+        <div class="row gallery-grid" id="galleryFirstSet4" style="display: none;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery10.png" class="img-fluid w-100" alt="صورة 10">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery10.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal10">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery11.png" class="img-fluid w-100" alt="صورة 11">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery11.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal11">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery12.png" class="img-fluid w-100" alt="صورة 12">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery12.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal12">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- المجموعة الخامسة -->
+        <div class="row gallery-grid" id="galleryFirstSet5" style="display: none;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery13.png" class="img-fluid w-100" alt="صورة 13">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery13.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal13">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery14.png" class="img-fluid w-100" alt="صورة 14">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery14.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal14">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery15.png" class="img-fluid w-100" alt="صورة 15">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery15.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal15">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	         <!-- المجموعة السادسة -->
+        <div class="row gallery-grid" id="galleryFirstSet6" style="display: none;">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery16.png" class="img-fluid w-100" alt="صورة 16">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery16.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal16">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery17.png" class="img-fluid w-100" alt="صورة 17">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery17.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal17">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-item position-relative overflow-hidden rounded">
+                    <img src="images/gallery18.png" class="img-fluid w-100" alt="صورة 18">
+                    <div class="gallery-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
+                        <a href="images/gallery18.png" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#galleryModal18">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const gallerySets = [
+        document.getElementById('galleryFirstSet1'),
+        document.getElementById('galleryFirstSet2'),
+        document.getElementById('galleryFirstSet3'),
+        document.getElementById('galleryFirstSet4'),
+        document.getElementById('galleryFirstSet5'),
+        document.getElementById('galleryFirstSet6') // المجموعة السادسة
+    ];
+
+    let currentSetIndex = 0;
+
+    function toggleGallery() {
+        gallerySets.forEach((set, index) => {
+            set.style.display = index === currentSetIndex ? 'flex' : 'none';
+        });
+        currentSetIndex = (currentSetIndex + 1) % gallerySets.length;
+    }
+
+    // تبديل الصور كل 5 ثواني
+    setInterval(toggleGallery, 5000);
+});
+</script>
+	
+<!-- Health Insurance Section -->
+<section class="insurance-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Health Insurance Packages</h2>
+            <p class="lead text-muted">Comprehensive insurance solutions for all your needs</p>
+        </div>
+
+        <div class="row">
+            <!-- Basic Package -->
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="card insurance-card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="h4 my-3">Student Package</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Age</th>
+                                    <th>First Year</th>
+                                    <th>Second Year</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0-15 years</td>
+                                    <td>490</td>
+                                    <td>735</td>
+                                    <td>1225</td>
+                                </tr>
+                                <tr>
+                                    <td>16-25 years</td>
+                                    <td>290</td>
+                                    <td>445</td>
+                                    <td>735</td>
+                                </tr>
+                                <tr>
+                                    <td>26-35 years</td>
+                                    <td>305</td>
+                                    <td>455</td>
+                                    <td>760</td>
+                                </tr>
+                                <tr>
+                                    <td>36-45 years</td>
+                                    <td>445</td>
+                                    <td>645</td>
+                                    <td>1,090</td>
+                                </tr>
+                                <tr>
+                                    <td>46-55 years</td>
+                                    <td>515</td>
+                                    <td>755</td>
+                                    <td>1,270</td>
+                                </tr>
+                                <tr>
+                                    <td>56-60 years</td>
+                                    <td>690</td>
+                                    <td>1,035</td>
+                                    <td>1,725</td>
+                                </tr>
+                                <tr>
+                                    <td>61-65 years</td>
+                                    <td>940</td>
+                                    <td>1,395</td>
+                                    <td>2,335</td>
+                                </tr>
+                                <tr>
+                                    <td>66-70 years</td>
+                                    <td>1,545</td>
+                                    <td>2,295</td>
+                                    <td>3,840</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Residency application coverage</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Specialized clinics</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Free medication</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Private hospital coverage</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Major surgeries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medium Package -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card insurance-card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white text-center">
+                        <h3 class="h4 my-3">Tourist Package</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Age</th>
+                                    <th>First Year</th>
+                                    <th>Second Year</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0-15 years</td>
+                                    <td>490</td>
+                                    <td>735</td>
+                                    <td>1225</td>
+                                </tr>
+                                <tr>
+                                    <td>16-25 years</td>
+                                    <td>290</td>
+                                    <td>445</td>
+                                    <td>735</td>
+                                </tr>
+                                <tr>
+                                    <td>26-35 years</td>
+                                    <td>305</td>
+                                    <td>455</td>
+                                    <td>760</td>
+                                </tr>
+                                <tr>
+                                    <td>36-45 years</td>
+                                    <td>445</td>
+                                    <td>645</td>
+                                    <td>1,090</td>
+                                </tr>
+                                <tr>
+                                    <td>46-55 years</td>
+                                    <td>515</td>
+                                    <td>755</td>
+                                    <td>1,270</td>
+                                </tr>
+                                <tr>
+                                    <td>56-60 years</td>
+                                    <td>690</td>
+                                    <td>1,035</td>
+                                    <td>1,725</td>
+                                </tr>
+                                <tr>
+                                    <td>61-65 years</td>
+                                    <td>940</td>
+                                    <td>1,395</td>
+                                    <td>2,335</td>
+                                </tr>
+                                <tr>
+                                    <td>66-70 years</td>
+                                    <td>1,545</td>
+                                    <td>2,295</td>
+                                    <td>3,840</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Residency application coverage</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Specialized clinics</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Free medication</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Private hospital coverage</li>
+                            <li class="mb-2"><i class="fas fa-times text-danger ml-2"></i> Major surgeries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Package -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card insurance-card border-0 shadow-sm h-100">
+                    <div class="card-header bg-danger text-white text-center">
+                        <h3 class="h4 my-3">Comprehensive Package</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Age</th>
+                                    <th>First Year</th>
+                                    <th>Second Year</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0-15 years</td>
+                                    <td>2,500</td>
+                                    <td>2,300</td>
+                                    <td>4,800</td>
+                                </tr>
+                                <tr>
+                                    <td>11-30 years</td>
+                                    <td>3,000</td>
+                                    <td>2,800</td>
+                                    <td>5,800</td>
+                                </tr>
+                                <tr>
+                                    <td>31-50 years</td>
+                                    <td>3,500</td>
+                                    <td>3,300</td>
+                                    <td>6,800</td>
+                                </tr>
+                                <tr>
+                                    <td>51+ years</td>
+                                    <td>4,000</td>
+                                    <td>3,800</td>
+                                    <td>7,800</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Full medical coverage</li>
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> All clinics and specialties</li>
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Free medication</li>
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Private hospital coverage</li>
+                            <li class="mb-2"><i class="fas fa-check text-success ml-2"></i> Major surgeries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features Section -->
+<section class="features-section py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Why Choose Infinity Passage</h2>
+            <p class="lead text-muted">We strive to provide you with the best possible service</p>
+        </div>
+
+        <div class="row">
+            <!-- Special Price Offers -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-tag fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="card-title">Special Price Offers</h3>
+                        <p class="card-text">
+                            We search for the best factory that offers your required products at the best price in Turkey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Sourcing -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-industry fa-3x text-success"></i>
+                        </div>
+                        <h3 class="card-title">Product Sourcing</h3>
+                        <p class="card-text">
+                            We identify the best factory in Turkey to supply and manufacture your products.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping from Turkey -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shipping-fast fa-3x text-warning"></i>
+                        </div>
+                        <h3 class="card-title">Shipping from Turkey</h3>
+                        <p class="card-text">
+                            We ship your goods from Turkey to your warehouse or any port of your choice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inspection and Auditing -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-search-plus fa-3x text-info"></i>
+                        </div>
+                        <h3 class="card-title">Inspection and Auditing</h3>
+                        <p class="card-text">
+                            Product inspection and acceptance services to ensure conformity with specifications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customs Clearance -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-file-invoice fa-3x text-danger"></i>
+                        </div>
+                        <h3 class="card-title">Customs Clearance</h3>
+                        <p class="card-text">
+                            Through our customs consultants, we offer customs clearance services for any product from Turkey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Assurance -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="card-title">Quality Assurance</h3>
+                        <p class="card-text">
+                            We are committed to providing the highest standards of quality and reliability in all our services.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Customer Testimonials Section -->
+<section class="testimonials-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Customer Testimonials</h2>
+            <p class="lead text-muted">What our customers say about their experience with us</p>
+        </div>
+
+        <div class="row">
+            <!-- First Customer Testimonial -->
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="testimonial-card card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="testimonial-quote mb-4">
+                            <i class="fas fa-quote-right text-primary mb-3"></i>
+                            <p class="card-text text-center">
+                                Excellent and outstanding service. They helped me resolve all my issues with professionalism and speed. I highly recommend working with them.
+                            </p>
+                        </div>
+                        <div class="testimonial-author text-center">
+                            <h5 class="mb-1">Mohammed Ahmed</h5>
+                            <p class="text-muted small">Student</p>
+                        </div>
+                        <div class="testimonial-rating text-center mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Customer Testimonial -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="testimonial-quote mb-4">
+                            <i class="fas fa-quote-right text-primary mb-3"></i>
+                            <p class="card-text text-center">
+                                Exceptional experience with the team. Highly accurate execution and constant communication. Thank you for this outstanding service that exceeds all expectations.
+                            </p>
+                        </div>
+                        <div class="testimonial-author text-center">
+                            <h5 class="mb-1">Maram Noman</h5>
+                            <p class="text-muted small">Content Creator</p>
+                        </div>
+                        <div class="testimonial-rating text-center mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Customer Testimonial -->
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="testimonial-card card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="testimonial-quote mb-4">
+                            <i class="fas fa-quote-right text-primary mb-3"></i>
+                            <p class="card-text text-center">
+                                A professional and dedicated team always striving for the best results. They exceeded all my expectations by providing innovative and effective solutions.
+                            </p>
+                        </div>
+                        <div class="testimonial-author text-center">
+                            <h5 class="mb-1">Abdullah Suleiman</h5>
+                            <p class="text-muted small">Entrepreneur</p>
+                        </div>
+                        <div class="testimonial-rating text-center mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Interactive effects for testimonials
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        
+        testimonialCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    });
+</script>
+<!-- Partners Section -->
+<section class="partners-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Our Partners</h2>
+            <p class="lead text-muted">We take pride in our strategic partnerships</p>
+        </div>
+        <div class="partners-carousel">
+            <img src="images/hamza.png" alt="Partner 2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/inpa.png" alt="Partner 1" data-aos="zoom-in">
+            <img src="images/alzaeemi.png" alt="Partner 2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/shadi.png" alt="Partner 3" data-aos="zoom-in" data-aos-delay="200">              
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section text-center">
+    <div class="container">
+        <h2 class="display-5 mb-4 text-white">Get in Touch with Infinity Passage</h2>
+        <div class="contact-info">
+            <div class="container">
+                <div class="text-center mb-5"></div>
+                <div class="partners-carousel">
+                    <img src="images/in.png" alt="Contact 1" data-aos="zoom-in">
+                    <img src="images/li.png" alt="Contact 2" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/gm.png" alt="Contact 3" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="images/fa.png" alt="Contact 4" data-aos="zoom-in" data-aos-delay="600">
+                    <img src="images/wh.png" alt="Contact 5" data-aos="zoom-in" data-aos-delay="800">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Social Media Links
+document.addEventListener('DOMContentLoaded', function() {
+    const socialLinks = {
+        'in': 'https://www.instagram.com/inpa.tbc',
+        'li': 'https://www.linkedin.com/in/inpa-tbc',
+        'gm': 'mailto:inpa.tbc@gmail.com',
+        'fa': 'https://www.facebook.com/inpa.tbc',
+        'wh': 'https://wa.me/+905343033725' // Replace with your phone number
+    };
+
+    // Add event listeners to images
+    document.querySelectorAll('.contact-section .partners-carousel img').forEach(img => {
+        img.style.cursor = 'pointer'; // Change cursor to pointer
+        img.addEventListener('click', function() {
+            // Extract key from image name
+            const key = this.src.split('/').pop().split('.')[0];
+            
+            // Open corresponding link
+            if (socialLinks[key]) {
+                window.open(socialLinks[key], '_blank');
+            }
+        });
+    });
+});
+</script>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p>&copy; 2025 Infinity Passage. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+    
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+</body>
+</html>
